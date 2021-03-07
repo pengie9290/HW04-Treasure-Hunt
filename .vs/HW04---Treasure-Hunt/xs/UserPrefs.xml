@@ -1,0 +1,29 @@
+﻿<Properties StartupConfiguration="{4B964ED8-56AA-BAEF-C522-6A9246986F77}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Mouse_Control.cs">
+    <Files>
+      <File FileName="Assets/Scripts/Kitten_Control.cs" Line="184" Column="48" />
+      <File FileName="Assets/Scripts/Walls.cs" Line="19" Column="33" />
+      <File FileName="Assets/Scripts/Mouse_Control.cs" Line="7" Column="46" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="HW04---Treasure-Hunt" expanded="True">
+            <Node name="Assets" expanded="True">
+              <Node name="Scripts" expanded="True">
+                <Node name="Mouse_Control.cs" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="9dbc36a1-4eb2-425c-a535-0e2168970d21" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
