@@ -10,22 +10,31 @@ public class Mouse_Control : MonoBehaviour
 
     public float MinRange = 3; //How close cat can get before running
     public float MaxRange = 5; //Distance to run to
-    public bool Following = false; //Is the mouse running away?
+    public bool Following = false; //Is the mouse following something?
+    public bool IsFollowing = false; //Does the mouse have something to follow?
 
     public float Speed = 1;
     public float SpeedMultiplier = 1.2f;
 
 
+
+    void Start()
+    {
+        Follow = this.gameObject;
+    }
+
     void UpdateFollow()
     {
         if (Follow.GetComponent<Kitten_Control>() != null) Speed = Follow.GetComponent<Kitten_Control>().Speed * SpeedMultiplier;
         if (Follow.GetComponent<Mouse_Control>() != null) Speed = Follow.GetComponent<Mouse_Control>().Speed * SpeedMultiplier;
-
     }
 
 
     void Update()
     {
+        if (Follow != null && Follow != this.gameObject) IsFollowing = true;
+        else IsFollowing = false;
+
         FollowDistance = Vector3.Distance(transform.position, Follow.transform.position);
         if (FollowDistance < MinRange && Following) Following = false;
         if (FollowDistance > MaxRange && !Following) Following = true;

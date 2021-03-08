@@ -9,14 +9,17 @@ public class Walls : MonoBehaviour
 
     void OnCollisionStay(Collision collision)
     {
-        print("Collided");
-        if (collision.gameObject == Player.gameObject && Player.MouseCount >= MiceToBreak)
+        if (collision.gameObject.CompareTag("Player"))
         {
-            print("Tries to destroy");
-            DestroyWall();
-        } else
-        {
-            Player.PushedAway();
+            if (collision.gameObject == Player.gameObject && Player.MouseCount >= MiceToBreak)
+            {
+                print("Tries to destroy");
+                DestroyWall();
+            }
+            else
+            {
+                Player.PushedAway();
+            }
         }
     }
     

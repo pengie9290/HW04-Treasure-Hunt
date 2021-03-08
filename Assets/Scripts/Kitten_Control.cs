@@ -33,12 +33,19 @@ public class Kitten_Control : MonoBehaviour
     public float Adjuster = 3f;
     private float recovery = 0;
 
+    public GameObject HeldCheese;
+    public bool HoldingCheese = false;
+
+    public List<GameObject> Mice = new List<GameObject>();
+
 
     void Start()
     {
         KittenSit.SetActive(true);
         KittenWalk.SetActive(false);
         IsSitting = true;
+        HoldingCheese = false;
+        HeldCheese.SetActive(false);
     }
 
     void Update()
@@ -47,6 +54,8 @@ public class Kitten_Control : MonoBehaviour
         KittenDirector();
         MoveKitten();
         AnimationControl();
+
+        if (HeldCheese != null) HeldCheese.SetActive(HoldingCheese);
     }
 
     //Determines what direction(s) the kitten is moving in
@@ -191,5 +200,35 @@ public class Kitten_Control : MonoBehaviour
         MovingUp = false;
         MovingLeft = false;
         MovingRight = false;
+    }
+
+    //Checks to see what to do when colliding with something
+    void OnCollisionEnter(Collision collision)
+    {
+        //If colliding with uncollected cheese
+        if (collision.gameObject.CompareTag("Cheese") && !HoldingCheese)
+        {
+            HoldingCheese = true;
+            Destroy(collision.gameObject);
+        }
+
+        if (collision.gameObject.CompareTag("Mouse"))
+        {
+            Mouse_Control Mouse = collision.gameObject.GetComponent<Mouse_Control>();
+            if (Mouse.IsFollowing == false && HoldingCheese == true)
+            {
+                MakeMouseFollow(Mouse);
+                HoldingCheese = false;
+                MouseCount += 1;
+            }
+        }
+    }
+
+    //Makes the mouse follow something
+    void MakeMouseFollow(Mouse_Control Mouse)
+    {
+        if (Mice.Count == 0) Mouse.Follow = this.gameObject;
+        else Mouse.Follow = Mice[Mice.Count - 1];
+        Mice.Add(Mouse.gameObject);
     }
 }
