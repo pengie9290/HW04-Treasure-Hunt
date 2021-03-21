@@ -33,6 +33,8 @@ public class Kitten_Control : MonoBehaviour
     public float Adjuster = 3f;
     private float recovery = 0;
 
+    public float MinWallDistance = 0.1f;
+
     public GameObject HeldCheese;
     public bool HoldingCheese = false;
 
@@ -51,6 +53,7 @@ public class Kitten_Control : MonoBehaviour
     void Update()
     {
         KittenDirections();
+        CastRaycasts();
         KittenDirector();
         MoveKitten();
         AnimationControl();
@@ -185,22 +188,22 @@ public class Kitten_Control : MonoBehaviour
     }
 
     //Pushes kitten away from walls
-    public void PushedAway()
-    {
-        recovery = 0.3f;
-        AdjustedLocation = transform.position - PreviousLocation;
-        AdjustedLocation *= Adjuster;
-        transform.position -= AdjustedLocation;
-        FreezeMovement();
-    }
+    //public void PushedAway()
+    //{
+    //    recovery = 0.3f;
+    //    AdjustedLocation = transform.position - PreviousLocation;
+    //    AdjustedLocation *= Adjuster;
+    //    transform.position -= AdjustedLocation;
+    //    FreezeMovement();
+    //}
 
-    void FreezeMovement()
-    {
-        MovingDown = false;
-        MovingUp = false;
-        MovingLeft = false;
-        MovingRight = false;
-    }
+    //void FreezeMovement()
+    //{
+    //    MovingDown = false;
+    //    MovingUp = false;
+    //    MovingLeft = false;
+    //    MovingRight = false;
+    //}
 
     //Checks to see what to do when colliding with something
     void OnCollisionEnter(Collision collision)
@@ -230,5 +233,29 @@ public class Kitten_Control : MonoBehaviour
         if (Mice.Count == 0) Mouse.Follow = this.gameObject;
         else Mouse.Follow = Mice[Mice.Count - 1];
         Mice.Add(Mouse.gameObject);
+    }
+
+    //Casts raycasts to determine if Kitten can move
+    void CastRaycasts()
+    {
+        if (MovingUp) MovingUp = CastRay(Vector3.up);
+        if (MovingDown) MovingDown = CastRay(Vector3.down);
+        if (MovingLeft) MovingLeft = CastRay(Vector3.left);
+        if (MovingRight) MovingRight = CastRay(Vector3.right);
+    }
+
+    //Casts individual rays
+    bool CastRay(Vector3 direction)
+    {
+        RaycastHit hit;
+        Physics.Raycast(transform.position, direction, out hit);
+        if (hit.collider != null && hit.collider.gameObject != null)
+        {
+            if (hit.collider.gameObject.CompareTag("Wall"))
+            {
+                if (hit.collider.gameObject.GetComponent<Walls>().MiceToBreak > MouseCount && hit.distance <= MinWallDistance) return false;
+            }
+        }
+        return true;
     }
 }

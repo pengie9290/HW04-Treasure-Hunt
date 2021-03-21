@@ -1,9 +1,9 @@
 ﻿<Properties StartupConfiguration="{4B964ED8-56AA-BAEF-C522-6A9246986F77}|">
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Kitten_Control.cs">
     <Files>
-      <File FileName="Assets/Scripts/Kitten_Control.cs" Line="187" Column="1" />
+      <File FileName="Assets/Scripts/Kitten_Control.cs" Line="251" Column="65" />
       <File FileName="Assets/Scripts/Walls.cs" />
-      <File FileName="Assets/Scripts/Mouse_Control.cs" Line="7" Column="46" />
+      <File FileName="Assets/Scripts/Mouse_Control.cs" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -21,7 +21,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="6f2eaf6d-2fca-4f0e-ac8a-440e68750e18" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="e9f5f45e-9196-4097-9dae-7a080dcab3aa" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

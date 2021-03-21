@@ -18,7 +18,7 @@ public class Walls : MonoBehaviour
             }
             else
             {
-                Player.PushedAway();
+                //Player.PushedAway();
             }
         }
     }
