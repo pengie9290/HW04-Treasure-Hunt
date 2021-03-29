@@ -4,6 +4,7 @@ ScriptsOnlyBuild:
     - Camera_Follow
     - Kitten_Control
     - Mouse_Control
+    - SFX_Manager
     - Walls
     Unity.2D.Tilemap.Editor.dll:
     - UnityEditor.Tilemaps.GridPaintingState
@@ -59,11 +60,17 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
+    - Class: 82
+      Script: {instanceID: 0}
+    - Class: 83
+      Script: {instanceID: 0}
     - Class: 91
       Script: {instanceID: 0}
     - Class: 95
       Script: {instanceID: 0}
     - Class: 104
+      Script: {instanceID: 0}
+    - Class: 108
       Script: {instanceID: 0}
     - Class: 109
       Script: {instanceID: 0}
@@ -85,6 +92,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 12988}
     - Class: 114
       Script: {instanceID: 13074}
+    - Class: 114
+      Script: {instanceID: 40236}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -192,7 +201,7 @@ ScriptsOnlyBuild:
     className: TMP_InputField
   - hash:
       serializedVersion: 2
-      Hash: 7fd4514d5f23e006ffeb3212de589e62
+      Hash: 60b28e46694ca46d02aec5cef4f56e12
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Kitten_Control
@@ -550,8 +559,14 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 9d8f1b344899b378c5414716fdfb5c50
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: SFX_Manager
   platform: 20
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
   playerPath: /Users/jeremyhuml/Desktop/Schoolwork/Intermediate Game Dev/Homework/Jeremy
-    Huml Treasure Hunt
+    Huml Treasure Hunt Final Version

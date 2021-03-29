@@ -26,6 +26,7 @@ public class Walls : MonoBehaviour
 
     void DestroyWall()
     {
+        SFX_Manager.Instance.PlaySFX(2);
         print("Destroys");
         Destroy(gameObject);
     }

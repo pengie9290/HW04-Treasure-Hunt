@@ -40,6 +40,11 @@ public class Kitten_Control : MonoBehaviour
 
     public List<GameObject> Mice = new List<GameObject>();
 
+    public bool UpInput = false;
+    public bool DownInput = false;
+    public bool LeftInput = false;
+    public bool RightInput = false;
+
 
     void Start()
     {
@@ -52,6 +57,7 @@ public class Kitten_Control : MonoBehaviour
 
     void Update()
     {
+        DirectionInputs();
         KittenDirections();
         CastRaycasts();
         KittenDirector();
@@ -61,6 +67,19 @@ public class Kitten_Control : MonoBehaviour
         if (HeldCheese != null) HeldCheese.SetActive(HoldingCheese);
     }
 
+    //Determines what directions the player is inputting
+    void DirectionInputs()
+    {
+        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W)) UpInput = true;
+        else UpInput = false;
+        if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S)) DownInput = true;
+        else DownInput = false;
+        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A)) LeftInput = true;
+        else LeftInput = false;
+        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)) RightInput = true;
+        else RightInput = false;
+    }
+
     //Determines what direction(s) the kitten is moving in
     void KittenDirections()
     {
@@ -68,25 +87,25 @@ public class Kitten_Control : MonoBehaviour
         {
             recovery -= Time.deltaTime;
         } else {
-            if (Input.GetKey(KeyCode.UpArrow) && !Input.GetKey(KeyCode.DownArrow))
+            if (UpInput && !DownInput)
         {
             MovingUp = true;
         }
         else MovingUp = false;
 
-        if (Input.GetKey(KeyCode.DownArrow) && !Input.GetKey(KeyCode.UpArrow))
+        if (DownInput && !UpInput)
         {
             MovingDown = true;
         }
         else MovingDown = false;
 
-        if (Input.GetKey(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.RightArrow))
+        if (LeftInput && !RightInput)
         {
             MovingLeft = true;
         }
         else MovingLeft = false;
 
-        if (Input.GetKey(KeyCode.RightArrow) && !Input.GetKey(KeyCode.LeftArrow))
+        if (RightInput && !LeftInput)
         {
             MovingRight = true;
         }
@@ -213,6 +232,7 @@ public class Kitten_Control : MonoBehaviour
         {
             HoldingCheese = true;
             Destroy(collision.gameObject);
+            SFX_Manager.Instance.PlaySFX(0);
         }
 
         if (collision.gameObject.CompareTag("Mouse"))
@@ -222,6 +242,7 @@ public class Kitten_Control : MonoBehaviour
             {
                 MakeMouseFollow(Mouse);
                 HoldingCheese = false;
+                SFX_Manager.Instance.PlaySFX(1);
                 MouseCount += 1;
             }
         }
